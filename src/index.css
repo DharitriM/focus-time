@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 4%;
+    --foreground: 180 100% 90%;
+
+    --card: 220 15% 8%;
+    --card-foreground: 180 100% 90%;
+
+    --popover: 220 15% 8%;
+    --popover-foreground: 180 100% 90%;
+
+    --primary: 180 100% 50%;
+    --primary-foreground: 220 20% 4%;
+
+    --secondary: 220 15% 12%;
+    --secondary-foreground: 180 50% 70%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 180 20% 50%;
+
+    --accent: 160 100% 45%;
+    --accent-foreground: 220 20% 4%;
+
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 180 30% 20%;
+    --input: 220 15% 15%;
+    --ring: 180 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Digital theme tokens */
+    --digital-glow: 180 100% 50%;
+    --digital-glow-secondary: 160 100% 45%;
+    --digital-dim: 180 20% 25%;
+    --digital-segment-off: 180 10% 12%;
+    --digital-amber: 35 100% 50%;
+    --digital-red: 0 100% 55%;
+
+    --sidebar-background: 220 15% 6%;
+    --sidebar-foreground: 180 100% 90%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 220 20% 4%;
+    --sidebar-accent: 220 15% 12%;
+    --sidebar-accent-foreground: 180 100% 90%;
+    --sidebar-border: 180 30% 20%;
+    --sidebar-ring: 180 100% 50%;
+  }
+
+  .dark {
+    --background: 220 20% 4%;
+    --foreground: 180 100% 90%;
+    --card: 220 15% 8%;
+    --card-foreground: 180 100% 90%;
+    --popover: 220 15% 8%;
+    --popover-foreground: 180 100% 90%;
+    --primary: 180 100% 50%;
+    --primary-foreground: 220 20% 4%;
+    --secondary: 220 15% 12%;
+    --secondary-foreground: 180 50% 70%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 180 20% 50%;
+    --accent: 160 100% 45%;
+    --accent-foreground: 220 20% 4%;
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 180 30% 20%;
+    --input: 220 15% 15%;
+    --ring: 180 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Digital display styles */
+  .digital-text {
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 
+      0 0 10px hsl(var(--digital-glow) / 0.8),
+      0 0 20px hsl(var(--digital-glow) / 0.5),
+      0 0 40px hsl(var(--digital-glow) / 0.3);
+  }
+
+  .digital-text-dim {
+    font-family: 'Orbitron', sans-serif;
+    color: hsl(var(--digital-dim));
+    text-shadow: none;
+  }
+
+  .digital-text-amber {
+    font-family: 'Orbitron', sans-serif;
+    color: hsl(var(--digital-amber));
+    text-shadow: 
+      0 0 10px hsl(var(--digital-amber) / 0.8),
+      0 0 20px hsl(var(--digital-amber) / 0.5);
+  }
+
+  .digital-text-accent {
+    font-family: 'Orbitron', sans-serif;
+    color: hsl(var(--digital-glow-secondary));
+    text-shadow: 
+      0 0 10px hsl(var(--digital-glow-secondary) / 0.8),
+      0 0 20px hsl(var(--digital-glow-secondary) / 0.5);
+  }
+
+  .digital-text-red {
+    font-family: 'Orbitron', sans-serif;
+    color: hsl(var(--digital-red));
+    text-shadow: 
+      0 0 10px hsl(var(--digital-red) / 0.8),
+      0 0 20px hsl(var(--digital-red) / 0.5);
+  }
+
+  /* LCD Panel effect */
+  .lcd-panel {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--card)) 0%,
+      hsl(220 15% 6%) 100%
+    );
+    border: 1px solid hsl(var(--border));
+    box-shadow: 
+      inset 0 2px 4px hsl(0 0% 0% / 0.3),
+      0 4px 20px hsl(var(--digital-glow) / 0.1);
+  }
+
+  /* Glowing border */
+  .glow-border {
+    border: 1px solid hsl(var(--digital-glow) / 0.3);
+    box-shadow: 
+      0 0 10px hsl(var(--digital-glow) / 0.1),
+      inset 0 0 10px hsl(var(--digital-glow) / 0.05);
+  }
+
+  /* Progress bar glow */
+  .progress-glow {
+    box-shadow: 
+      0 0 10px hsl(var(--digital-glow) / 0.5),
+      0 0 20px hsl(var(--digital-glow) / 0.3);
+  }
+
+  /* Tab styles */
+  .tab-active {
+    color: hsl(var(--primary));
+    border-bottom: 2px solid hsl(var(--primary));
+    text-shadow: 0 0 10px hsl(var(--digital-glow) / 0.5);
+  }
+
+  .tab-inactive {
+    color: hsl(var(--muted-foreground));
+    border-bottom: 2px solid transparent;
+  }
+
+  .tab-inactive:hover {
+    color: hsl(var(--secondary-foreground));
+  }
+
+  /* Button variants */
+  .btn-digital {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-200;
+    font-family: 'Orbitron', sans-serif;
+    background: hsl(var(--secondary));
+    color: hsl(var(--primary));
+    border: 1px solid hsl(var(--digital-glow) / 0.3);
+  }
+
+  .btn-digital:hover {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 0 20px hsl(var(--digital-glow) / 0.5);
+  }
+
+  .btn-digital:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-digital-secondary {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-200;
+    font-family: 'Orbitron', sans-serif;
+    background: transparent;
+    color: hsl(var(--muted-foreground));
+    border: 1px solid hsl(var(--border));
+  }
+
+  .btn-digital-secondary:hover {
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--primary) / 0.5);
+  }
+
+  .btn-digital-danger {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-200;
+    font-family: 'Orbitron', sans-serif;
+    background: hsl(var(--destructive) / 0.2);
+    color: hsl(var(--digital-red));
+    border: 1px solid hsl(var(--digital-red) / 0.3);
+  }
+
+  .btn-digital-danger:hover {
+    background: hsl(var(--destructive));
+    color: hsl(var(--destructive-foreground));
+  }
+
+  /* Input styles */
+  .input-digital {
+    @apply px-4 py-3 rounded-lg transition-all duration-200;
+    font-family: 'Orbitron', sans-serif;
+    background: hsl(var(--input));
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+  }
+
+  .input-digital:focus {
+    outline: none;
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 10px hsl(var(--digital-glow) / 0.3);
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+}
+
+@layer utilities {
+  .font-digital {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      text-shadow: 
+        0 0 10px hsl(var(--digital-glow) / 0.8),
+        0 0 20px hsl(var(--digital-glow) / 0.5),
+        0 0 40px hsl(var(--digital-glow) / 0.3);
+    }
+    50% {
+      text-shadow: 
+        0 0 20px hsl(var(--digital-glow) / 1),
+        0 0 40px hsl(var(--digital-glow) / 0.7),
+        0 0 60px hsl(var(--digital-glow) / 0.5);
+    }
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+}
