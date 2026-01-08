@@ -51,5 +51,3 @@ This project is designed for:
 - **Local Fonts** (Offline support)
 
 ---
-
-## 📁 Project St
